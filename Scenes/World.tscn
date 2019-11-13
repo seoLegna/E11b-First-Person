@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Crate.tscn" type="PackedScene" id=1]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.286275, 0.313726, 0.341176, 1 )
+
+[sub_resource type="PlaneMesh" id=2]
+material = SubResource( 1 )
+size = Vector2( 20, 20 )
+
+[sub_resource type="ConvexPolygonShape" id=3]
+points = PoolVector3Array( 10, 0, 10, -10, 0, 10, 10, 0, -10, -10, 0, -10 )
+
+[node name="World" type="Spatial"]
+
+[node name="Ground" type="StaticBody" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0944796, 0.0631865, 0.0122795 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground"]
+shape = SubResource( 3 )
+
+[node name="Crate" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.67044, 1.37587, -2.57926 )
+
+[node name="Crate2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.54735, 2.63189, 0.0999665 )
+
+[node name="Crate3" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.56277, 0.647794, 0.439583 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.456703, 0, 0.889619, 0, 1, 0, -0.889619, 0, 0.456703, 0, 1.54009, 0 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.939326, 0.165016, 0.300728, -0.320125, 0.736663, 0.595691, -0.123237, -0.655818, 0.744792, 0, 4.22297, 0 )
+shadow_enabled = true
+shadow_color = Color( 0.129412, 0.145098, 0.160784, 1 )
